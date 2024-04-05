@@ -6,7 +6,7 @@ node{
   stage('2.mavenBuild'){
     sh "${mavenHome}/bin/mvn package"
   }
-  /*
+  
   stage('3.codeQualityAnalysis'){
     sh "${mavenHome}/bin/mvn sonar:sonar"    
   }
@@ -27,7 +27,7 @@ node{
   }
   stage('7.deploy2prod'){
           //use deploy to container plugin
-    deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.31.8.232:8088/')], contextPath: null, war: 'target/*war'
+    deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.31.8.232:8080/')], contextPath: null, war: 'target/*war'
  
   }
     stage('8.apm'){
@@ -43,5 +43,5 @@ Regards,
 Landmark Technologies''', recipientProviders: [developers(), upstreamDevelopers(), buildUser()], subject: 'job status', to: 'mylandmarktech@gmail.com'
 
   }
-*/
+
 }
